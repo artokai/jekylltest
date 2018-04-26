@@ -1,0 +1,14 @@
+---
+layout: single
+---
+
+<p>I'm mostly a developer. I try to create solutions which make our customers perform better. 
+    And I try to design and implement them as good as I can. The order of these things is important....<p> 
+    
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+
+{% for post in paginator.posts %}
+  {% include archive-single.html %}
+{% endfor %}
+
+{% include paginator.html %}

@@ -1,0 +1,1 @@
+docker run -it --rm --name artokai -p 35729:35729 --expose 4000 -p 4000:4000 -v "%cd%":/srv/jekyll jekyll/jekyll bash

@@ -1,0 +1,27 @@
+---
+layout: archive
+permalink: /tags/
+title: "Posts by Tags"
+author_profile: true
+---
+
+{% include base_path %}
+{% include group-by-array collection=site.posts field="tags" %}
+
+  <p class="page__taxonomy">
+    <strong>Jump to: </strong>
+    <span itemprop="keywords">
+    {% for tag in group_names %}
+      {% assign posts = group_items[forloop.index0] %}
+      <a href="#{{ tag | slugify }}" class="page__taxonomy-item" rel="tag">{{ tag }} (<span>{{ posts.size }}</span>)</a>{% unless forloop.last %}<span class="sep">, </span>{% endunless %}
+    {% endfor %}
+    </span>
+  </p>
+
+{% for tag in group_names %}
+  {% assign posts = group_items[forloop.index0] %}
+  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
+  {% for post in posts %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endfor %}
